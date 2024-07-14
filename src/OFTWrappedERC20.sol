@@ -23,10 +23,13 @@ contract OFTWrappedERC20 is OFT {
 
     function wrap(uint256 amount) external {
         baseToken.transferFrom(msg.sender, address(this), amount);
+        _mint(msg.sender, amount);
+        emit Wrap(msg.sender, amount);
     }
 
     function unwrap(uint256 amount) external {
         _burn(msg.sender, amount);
         baseToken.transfer(msg.sender, amount);
+        emit Unwrap(msg.sender, amount);
     }
 }
