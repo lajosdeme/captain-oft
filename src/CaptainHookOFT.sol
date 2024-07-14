@@ -10,19 +10,17 @@ import {PoolKey} from "./PancakeV4Structs.sol";
 import {ICaptainHook} from "./ICaptainHook.sol";
 
 contract CaptainHookOFT is OFTWrappedERC20 {
-    ICaptainHook public immutable captainHook;
+    ICaptainHook public captainHook;
 
     using OFTMsgCodec for bytes;
     using OFTMsgCodec for bytes32;
 
-    constructor(
-        string memory _name,
-        string memory _symbol,
-        address _lzEndpoint,
-        address _delegate,
-        address _baseToken,
-        address _captainHook
-    ) OFTWrappedERC20(_name, _symbol, _lzEndpoint, _delegate, _baseToken) {
+    constructor(string memory _name, string memory _symbol, address _lzEndpoint, address _delegate, address _baseToken)
+        OFTWrappedERC20(_name, _symbol, _lzEndpoint, _delegate, _baseToken)
+    {}
+
+    function setCaptainHook(address _captainHook) external {
+        require(address(captainHook) == address(0), "Captain Hook already set");
         captainHook = ICaptainHook(_captainHook);
     }
 
