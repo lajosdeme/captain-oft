@@ -4,3 +4,6 @@
 [submodule "lib/lz-oft"]
 	path = lib/lz-oft
 	url = https://github.com/lajosdeme/lz-oft
+[submodule "lib/openzeppelin-contracts"]
+	path = lib/openzeppelin-contracts
+	url = https://github.com/openzeppelin/openzeppelin-contracts
